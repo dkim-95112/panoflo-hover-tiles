@@ -1,0 +1,50 @@
+<html>
+<head>
+  <script type="text/javascript" src="jquery-1.2.6.js"></script>
+  <script type="text/javascript" src="jquery-ui-personalized-1.5.2.js"></script>
+  <script type="text/javascript" src="jquery.pano.js"></script>
+  <style>
+	.panoflo { width: 299
+	; position: absolute
+	; z-index: +3
+	; opacity: 0.7
+	; background: yellow
+	; overflow: auto
+	}
+	.tile.lefty { width: 44; height: 133; display: block
+	}
+	.tile.fronty { width: 133; display: block
+	}
+	.tile.righty { width: 44; height: 133; display: block;
+	}
+	img.tile { float: left; position: relative; display: none; background: red
+	}
+	.relative { position: relative
+	}
+	.absolute { position: absolute
+	}
+	.float { float: left
+	}
+	.meter { float: left; background: cyan; display:block; opacity: 0.7
+	}
+  </style>
+</head>
+<body>
+  <div id="my-panoflo" class="panoflo" style="top:5em;left:244">panoflo tiles here<br>move cursor across central yellow area</div>
+
+  <div id="m_pano" class="absolute meter" style="top:0;background:blue">
+	<div class="relative float">pano meter</div>
+	<br>
+	<div id="m_lefty" class="relative meter" style="background:green">lefty</div>
+	<div id="m_righty" class="relative meter" style="background:green">righty</div>
+	<br>
+	<div id="m_fronty" class="relative meter" style="background:yellow">fronty</div>
+	<br>
+  </div>
+
+  <div id="m_wiggle" class="absolute meter" style="top:3em;background:red">wiggle</div>
+  <div id="m_wiggle_room" class="absolute meter" style="top:4em;background:green">wiggle room</div>
+  <div id="m_wiggle_ratio" class="absolute meter" style="top:0;background:green">wiggle ratio</div>
+  <div id="m_next_i" class="absolute meter" style="top:1em">next i</div>
+  <div id="m_wiggle_stepped" class="absolute meter" style="top:2em;background:green">wiggle stepped</div>
+</body></html>
