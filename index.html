@@ -1,15 +1,14 @@
 <html>
 <head>
   <script type="text/javascript" src="jquery-1.2.6.js"></script>
-  <script type="text/javascript" src="jquery-ui-personalized-1.5.2.js"></script>
   <script type="text/javascript" src="jquery.pano.js"></script>
   <style>
-	.panoflo { width: 299
-	; position: absolute
-	; z-index: +3
-	; opacity: 0.7
-	; background: yellow
-	; overflow: auto
+	#my-panoflo { 
+	  width: 300
+	  ; position: absolute
+	  ; opacity: 0.7
+	  ; background: yellow
+	  ;top:5em;left:244
 	}
 	.tile.lefty { width: 44; height: 133; display: block
 	}
@@ -30,7 +29,9 @@
   </style>
 </head>
 <body>
-  <div id="my-panoflo" class="panoflo" style="top:5em;left:244">panoflo tiles here<br>move cursor across central yellow area</div>
+  
+  panoflo tiles here<br>move cursor across central yellow area
+  <div id="my-panoflo"></div>
 
   <div id="m_pano" class="absolute meter" style="top:0;background:blue">
 	<div class="relative float">pano meter</div>
