@@ -1,51 +1,45 @@
-<html>
-<head>
+  <html>
+  <head>
   <script type="text/javascript" src="jquery-1.2.6.js"></script>
   <script type="text/javascript" src="jquery.pano.js"></script>
   <style>
-	#my-panoflo { 
-	  width: 300
-	  ; position: absolute
-	  ; opacity: 0.7
-	  ; background: yellow
-	  ;top:5em;left:244
-	}
-	.tile.lefty { width: 44; height: 133; display: block
-	}
-	.tile.fronty { width: 133; display: block
-	}
-	.tile.righty { width: 44; height: 133; display: block;
-	}
-	img.tile { float: left; position: relative; display: none; background: red
-	}
-	.relative { position: relative
-	}
-	.absolute { position: absolute
-	}
-	.float { float: left
-	}
-	.meter { float: left; background: cyan; display:block; opacity: 0.7
-	}
-  </style>
-</head>
-<body>
+  #my-panoflo { 
+	position: relative;
+	height: 150;
+	width: 300;
+	opacity: 0.7;
+	background: yellow;
+	overflow: scroll;
+	left:244;
+  }
+ul.tile {display:block; width:1500px; height:140; list-style: none}
+li.tile {display:block; float:left;}
+img {width:100%; height:100%}
+.left {width: 44; height: 133}
+.over {width: 133}
+.right {width: 44; height: 133}
+.ul_meter {background-color:cyan; position:absolute}
+.over_meter {background-color:magenta; position:absolute}
+.prev_meter, .next_meter {background-color:green; position:absolute}
+</style>
+  </head>
+  <body>
   
-  panoflo tiles here<br>move cursor across central yellow area
-  <div id="my-panoflo"></div>
-
-  <div id="m_pano" class="absolute meter" style="top:0;background:blue">
-	<div class="relative float">pano meter</div>
-	<br>
-	<div id="m_lefty" class="relative meter" style="background:green">lefty</div>
-	<div id="m_righty" class="relative meter" style="background:green">righty</div>
-	<br>
-	<div id="m_fronty" class="relative meter" style="background:yellow">fronty</div>
-	<br>
+panoflo tiles here<br>move cursor across central yellow area
+<div class="ul_meter">hello</div>
+<div class="over_meter">world!</div>
+<div class="prev_meter">prev</div>
+<div class="next_meter">next</div>
+<p>
+  <div id="my-panoflo">
+<ul class="tile"></ul>
   </div>
-
-  <div id="m_wiggle" class="absolute meter" style="top:3em;background:red">wiggle</div>
-  <div id="m_wiggle_room" class="absolute meter" style="top:4em;background:green">wiggle room</div>
-  <div id="m_wiggle_ratio" class="absolute meter" style="top:0;background:green">wiggle ratio</div>
-  <div id="m_next_i" class="absolute meter" style="top:1em">next i</div>
-  <div id="m_wiggle_stepped" class="absolute meter" style="top:2em;background:green">wiggle stepped</div>
-</body></html>
+<div class="last_li_left"></div>
+<div class="last_li_width"></div>
+<div class="page_x"></div>
+<div class="offset_left"></div>
+<div class="width"></div>
+<div class="percent_over"></div>
+<div class="scroll_range"></div>
+</body>
+  </html>

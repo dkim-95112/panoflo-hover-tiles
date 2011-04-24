@@ -1,28 +1,48 @@
 (function($){
+  $(function(){  // ready function
+	// variation of http://valums.com/scroll-menu-jquery/
 	//    from: ...[][i][]......
 	//      to: ......[][i][]...
-  var tile = function(){
-	 
-  }
-
-$(function(){
-  $('#my-panoflo').each(function(){
-	var $this = $(this);
-	for(var i = 0; i < 5; i++){
-	  $this.append(
-		$('<img src="wn_nav.png">')
-		.mouseover(function(event){
-		  $(this).addClass('over');
-		})
-		.mouseout(function(event){
-		  $(this).removeClass('over');
-		})
+	var div = $('#my-panoflo');
+	var ul = $('ul', div);
+	for(var i = 0; i < 8; i++){
+	  ul.append(
+		$('<li class="tile"><img src="wn_nav.png"></li>')
 	  );
 	}
-//	$this.triggerHandler('load');
+	$('li.tile', ul).mouseover(function(event){
+	  var $this = $(this);
+	  $this.siblings('.tile').removeClass('left right over');
+	  $this.removeClass('left right');
+	  $this.addClass('over');
+	  var prev = $this.prev('.tile').addClass('left');
+	  var next = $this.next('.tile').addClass('right');
+	  $('div.over_meter').css({'left': $this.offset().left,
+							   'width': $this.width()});
+	  $('div.prev_meter').css({'left': prev.length ? prev.offset().left : 0,
+							   'width': prev.length ? prev.width() : 0});
+	  $('div.next_meter').css({'left': next.length ? next.offset().left : 0,
+							   'width': next.length ? next.width():0});
+	});
+	var last_li = ul.find('li:last-child');
+	div.mousemove(function(e){
+	  var last_li_left = last_li.offset().left;
+	  var last_li_width = last_li.outerWidth();
+	  var ul_width = last_li.offset().left + last_li.outerWidth();
+	  var div_width = div.width();
+	  $('div.last_li_left').text(last_li_left);
+	  $('div.last_li_width').text(last_li_width);
+	  $('div.ul_offset_left').text(ul.offset().left);
+	  $('div.page_x').text(e.pageX);
+	  $('div.offset_left').text(div.offset().left);
+	  $('div.width').text(div_width);
+	  var percent_over = (e.pageX - div.offset().left) / div_width;
+	  var scroll_range = ul_width - div_width;
+	  $('div.percent_over').text(percent_over);
+	  $('div.scroll_range').text(scroll_range);
+	  $('div.ul_meter').css({'left': ul.offset().left, 'width':ul_width});
+	});
   });
-});
-
 })(jQuery);
 
 
