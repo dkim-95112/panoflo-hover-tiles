@@ -16,14 +16,12 @@
 	  .removeClass('prev next').addClass('hover')
 	  .prev().addClass('prev').end()
 	  .next().addClass('next').end();
-
 	  scrolling_face.width(function(){
 		var w = 0;
 		tiles.each(function(){ w += $(this).width()});
 		return w;
 	  });
 	});
-	var outer_hole = $('div.outer_hole');
 	var inner_hole = $('div.inner_hole');
 	inner_hole.mousemove(function(e){
 	  var t = $(this);
