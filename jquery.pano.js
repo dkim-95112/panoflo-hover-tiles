@@ -1,46 +1,33 @@
 (function($){
-  $(function(){  // ready function
+  $(function(){  // idiom: ready function
 	// variation of http://valums.com/scroll-menu-jquery/
 	//    from: ...[][i][]......
 	//      to: ......[][i][]...
-	var div = $('#my-panoflo');
-	var ul = $('ul', div);
-	for(var i = 0; i < 8; i++){
-	  ul.append(
-		$('<li class="tile"><img src="wn_nav.png"></li>')
-	  );
+	var outer_hole = $('div.outer_hole');
+	var inner_hole = $('div.inner_hole');
+	var scrolling_face = $('div.scrolling_face');
+	for(var i = 0; i < 55; i++){
+	  $('<div class="tile"/>').css({
+		'position':'relative',
+		'float':'left'
+	  }).append(
+		$('<img class="tile_img" src="wn_nav.png"/>')
+	  ).appendTo(scrolling_face);
 	}
-	$('li.tile', ul).mouseover(function(event){
-	  var $this = $(this);
-	  $this.siblings('.tile').removeClass('left right over');
-	  $this.removeClass('left right');
-	  $this.addClass('over');
-	  var prev = $this.prev('.tile').addClass('left');
-	  var next = $this.next('.tile').addClass('right');
-	  $('div.over_meter').css({'left': $this.offset().left,
-							   'width': $this.width()});
-	  $('div.prev_meter').css({'left': prev.length ? prev.offset().left : 0,
-							   'width': prev.length ? prev.width() : 0});
-	  $('div.next_meter').css({'left': next.length ? next.offset().left : 0,
-							   'width': next.length ? next.width():0});
+	$('.tile', scrolling_face).mouseover(function(e){
+	  $(this).siblings().removeClass('prev next hover').end()
+	  .removeClass('prev next').addClass('hover')
+	  .prev().addClass('prev').end()
+	  .next().addClass('next').end();
 	});
-	var last_li = ul.find('li:last-child');
-	div.mousemove(function(e){
-	  var last_li_left = last_li.offset().left;
-	  var last_li_width = last_li.outerWidth();
-	  var ul_width = last_li.offset().left + last_li.outerWidth();
-	  var div_width = div.width();
-	  $('div.last_li_left').text(last_li_left);
-	  $('div.last_li_width').text(last_li_width);
-	  $('div.ul_offset_left').text(ul.offset().left);
-	  $('div.page_x').text(e.pageX);
-	  $('div.offset_left').text(div.offset().left);
-	  $('div.width').text(div_width);
-	  var percent_over = (e.pageX - div.offset().left) / div_width;
-	  var scroll_range = ul_width - div_width;
-	  $('div.percent_over').text(percent_over);
-	  $('div.scroll_range').text(scroll_range);
-	  $('div.ul_meter').css({'left': ul.offset().left, 'width':ul_width});
+	inner_hole.mousemove(function(e){
+	  var $this = $(this);
+	  var width = $this.width();
+	  var left = $this.offset().left;
+	  var percent = (e.pageX - left)/width;
+	  scrolling_face.css({
+		'left': - percent * (scrolling_face.width() - outer_hole.width())
+	  });
 	});
   });
 })(jQuery);

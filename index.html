@@ -1,45 +1,36 @@
-  <html>
+<html>
   <head>
-  <script type="text/javascript" src="jquery-1.2.6.js"></script>
-  <script type="text/javascript" src="jquery.pano.js"></script>
-  <style>
-  #my-panoflo { 
-	position: relative;
-	height: 150;
-	width: 300;
-	opacity: 0.7;
-	background: yellow;
-	overflow: scroll;
-	left:244;
-  }
-ul.tile {display:block; width:1500px; height:140; list-style: none}
-li.tile {display:block; float:left;}
-img {width:100%; height:100%}
-.left {width: 44; height: 133}
-.over {width: 133}
-.right {width: 44; height: 133}
-.ul_meter {background-color:cyan; position:absolute}
-.over_meter {background-color:magenta; position:absolute}
-.prev_meter, .next_meter {background-color:green; position:absolute}
-</style>
+	<script type="text/javascript" src="jquery-1.5.2.js"></script>
+	<script type="text/javascript" src="jquery.pano.js"></script>
+	<style>
+	  .outer_hole {width:444; height:222}
+	  .inner_hole {width:333; height:111}
+	  .scrolling_face {}
+	  .tile {width:11; height:111}
+	  .tile_img {width:99%; height:99%}
+	  .tile.hover {width:111}
+	  .tile.prev {width:55}
+	  .tile.next {width:55}
+	</style>
   </head>
   <body>
-  
-panoflo tiles here<br>move cursor across central yellow area
-<div class="ul_meter">hello</div>
-<div class="over_meter">world!</div>
-<div class="prev_meter">prev</div>
-<div class="next_meter">next</div>
-<p>
-  <div id="my-panoflo">
-<ul class="tile"></ul>
-  </div>
-<div class="last_li_left"></div>
-<div class="last_li_width"></div>
-<div class="page_x"></div>
-<div class="offset_left"></div>
-<div class="width"></div>
-<div class="percent_over"></div>
-<div class="scroll_range"></div>
-</body>
-  </html>
+	<h2>move cursor across yellow 'div'</h2>
+	<div id="my-panoflo" style="position:relative; left:22%">
+	  <div class="outer_hole"
+		   style="position:absolute;
+				  background-color:SkyBlue;
+				  opacity:0.3">
+	  </div>
+	  <div class="inner_hole"
+		   style="position:absolute; left:55; top:55;
+				  background-color:yellow;
+				  border:1px solid blue;
+				  opacity:0.3">
+	  </div>
+	  <div class="scrolling_face"
+		   style="position:absolute;
+				  background:pink; opacity:0.7">
+	  </div>
+	</div>
+  </body>
+</html>
