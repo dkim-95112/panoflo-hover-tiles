@@ -1,32 +1,38 @@
 (function($){
-  $(function(){  // idiom: ready function
-	// variation of http://valums.com/scroll-menu-jquery/
-	//    from: ...[][i][]......
-	//      to: ......[][i][]...
-	var outer_hole = $('div.outer_hole');
-	var inner_hole = $('div.inner_hole');
+  // variation of http://valums.com/scroll-menu-jquery/
+  $(function(){
 	var scrolling_face = $('div.scrolling_face');
 	for(var i = 0; i < 55; i++){
 	  $('<div class="tile"/>').css({
 		'position':'relative',
 		'float':'left'
 	  }).append(
-		$('<img class="tile_img" src="wn_nav.png"/>')
+		$('<img style="width:100%" src="wn_nav.png"/>')
 	  ).appendTo(scrolling_face);
 	}
-	$('.tile', scrolling_face).mouseover(function(e){
+	var tiles = $('.tile', scrolling_face);
+	tiles.mouseenter(function(e){
 	  $(this).siblings().removeClass('prev next hover').end()
 	  .removeClass('prev next').addClass('hover')
 	  .prev().addClass('prev').end()
 	  .next().addClass('next').end();
+
+	  scrolling_face.width(function(){
+		var w = 0;
+		tiles.each(function(){ w += $(this).width()});
+		return w;
+	  });
 	});
+	var outer_hole = $('div.outer_hole');
+	var inner_hole = $('div.inner_hole');
 	inner_hole.mousemove(function(e){
-	  var $this = $(this);
-	  var width = $this.width();
-	  var left = $this.offset().left;
-	  var percent = (e.pageX - left)/width;
+	  var t = $(this);
+	  var o = t.offset();
+	  var px = (e.pageX - o.left)/t.width();
+	  var py = (e.pageY - o.top)/t.height();
 	  scrolling_face.css({
-		'left': - percent * (scrolling_face.width() - outer_hole.width())
+		'left': px * (inner_hole.width() - scrolling_face.width()),
+		'top': py * (inner_hole.height() - scrolling_face.height()),
 	  });
 	});
   });
