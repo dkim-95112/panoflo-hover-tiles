@@ -3,52 +3,49 @@
   $(function(){
 	var inner_hole = $('div.inner_hole');
  	var inner_hole_width = inner_hole.width();
- 	var inner_hole_left = inner_hole.offset().left;
-	var tile = $('img.tile');
 	for(var i = 0; i < 11; i++){
-	  var r = tile.clone().css({
-		'position':'relative',
-		'visibility': 'visible',
-//		'left':inner_hole_width/11 * i,
-	  }).attr({
-		'src':'img/Photo ' + i + '.jpg'
+	  $('<div class="tile"/>').css({
+		'position':'absolute',
+		'left':inner_hole_width/11 * i,
 	  }).appendTo(inner_hole);
 	}
-	var tiles = $('img.tile');
-	tiles.mouseenter(function(e){
-	  var hover = $(this);
-	  hover.css({
+	var div_tiles = $('div.tile', inner_hole);
+	var target_imgs = div_tiles.map(function(i){
+	  return $('<img>').attr({
+		'src':'img/Photo ' + i + '.jpg'
+	  }).css({
+		'position':'absolute',
+		'width':33,
+	  }).appendTo(this)[0];
+	});
+	var helper_imgs = div_tiles.map(function(){
+	  return $(this).find('img').clone().addClass('helper').css({
+		'top':33
+	  }).prependTo(this)[0];
+	});
+	helper_imgs.bind('hover_over', function(){
+	  $(this).css({'width':222, 'visibility':'visible', 'margin-left':0});
+	}).bind('hover_prev', function(){
+	  $(this).css({'width':99, 'visibility':'visible', 'margin-left':-77});
+	}).bind('hover_prev_other', function(){
+	  $(this).css({'visibility':'hidden'});
+	}).bind('hover_next', function(){
+	  $(this).css({'width':99, 'visibility':'visible', 'margin-left':199});
+	}).bind('hover_next_other', function(){
+	  $(this).css({'visibility':'hidden'});
+	});
+	target_imgs.mouseenter(function(e){
+	  $(this).css({
 		'border':'1px solid magenta'
-	  });
-	  var dst_src_map = {
-		'img.hover':{'elem':hover},
-		'img.left':{'elem':hover.prev()},
-		'img.right':{'elem':hover.next()}
-	  };
-	  var hover_left = hover.offset().left;
-	  for(var dst_key in dst_src_map){
-		var dst_elem = $(dst_key);
-		var src = dst_src_map[dst_key];
-		if(src.elem.length){
-		  dst_elem.attr({
-			'src':src.elem.attr('src')
-		  }).css({
-			'visibility':'visible',
-			'left':hover_left - inner_hole.offset().left,
-		  })
-		} else {
-		  dst_elem.attr({
-			'src':'wn_nav.png'
-		  }).css({
-			'visibility':'hidden'
-		  });
-		}
-	  }
+	  }).parent().find('.helper').trigger('hover_over').end()
+	  .prev().find('.helper').trigger('hover_prev').end()
+	  .prevAll().find('.helper').trigger('hover_prev_other').end().end().end()
+	  .next().find('.helper').trigger('hover_next').end()
+	  .nextAll().find('.helper').trigger('hover_next_other').end().end().end()
 	}).mouseleave(function(e){
-	  var hover = $(this);
-	  hover.css({
+	  $(this).css({
 		'border':'none'
 	  });
-	})
+	});
   });
 })(jQuery);

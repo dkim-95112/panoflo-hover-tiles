@@ -3,55 +3,21 @@
 	<script type="text/javascript" src="jquery-1.5.2.js"></script>
 	<script type="text/javascript" src="jquery.pano.js"></script>
   </head>
-  <body style="background-color:light grey">
-	<h3>move cursor across yellow 'div'</h3>
-	<div id="my-panoflo" style="position:relative; left:222">
-	  <div class="outer_hole"
+  <body style="background-color:grey">
+	<--- move cursor across right here
+	  <div id="my-panoflo"
 		   style="
-				  position:absolute;left:0; top:0;
+				  position:relative;
+				  float:left;
+				  border:1px solid cyan;
 				  ">
-		<img class="tile"
+		<div class="inner_hole"
 			 style="
-					position:absolute;left:0; top:0;
-					width:22;
-					visibility:hidden;
-					opacity:0.66;
-					" src="wn_nav.png">
-		<img class="left"
-			 style="
-					z-index:-1;
-					position:absolute;left:0; top:0;
-					margin-left:-99; margin-top:33;
-					width:88;
-					background-color:pink;
-					border:1px solid pink;
-					" src="wn_nav.png">
-		<img class="hover"
-			 style="
-					z-index:-1;
-					position:absolute; left:0; top:0;
-					margin-left:0; margin-top:44;
-					width:111;
-					background-color:magenta;
-					border:1px solid magenta;
-					" src="wn_nav.png">
-		<img class="right"
-			 style="
-					z-index:-1;
-					position:absolute; left:0; top:0;
-					margin-left:122; margin-top:33;
-					width:88;
-					background-color:cyan;
-					border:1px solid cyan;
-					" src="wn_nav.png">
+					position:absolute;
+					border:1px solid red;
+					width:333;
+					">
+		</div>
 	  </div>
-	  <div class="inner_hole"
-		   style="
-				  position:relative; left:0; top:0
-				  width:333;
-				  border:1px solid red;
-				  ">
-	  </div>
-	</div>
   </body>
 </html>
