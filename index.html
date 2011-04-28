@@ -2,24 +2,56 @@
   <head>
 	<script type="text/javascript" src="jquery-1.5.2.js"></script>
 	<script type="text/javascript" src="jquery.pano.js"></script>
-	<style>
-	  .tile {
-	  width:11; background-color:yellow; opacity:0.7}
-	  .tile.hover {
-	  width:111; margin-left:-55; background-color:cyan; z-index:-1}
-	  .tile.prev {
-	  width:44; margin-left:-99; background-color:cyan; z-index:-1}
-	  .tile.next {
-	  width:44; margin-left:55; background-color:cyan; z-index:-1}
-	  </style>
   </head>
-  <body>
+  <body style="background-color:light grey">
 	<h3>move cursor across yellow 'div'</h3>
-	<div id="my-panoflo" class="inner_hole"
-		 style="position:relative;
-				margin-left:auto; margin-right:auto;
-				width:222;
-				">
+	<div id="my-panoflo" style="position:relative; left:222">
+	  <div class="outer_hole"
+		   style="
+				  position:absolute;left:0; top:0;
+				  ">
+		<img class="tile"
+			 style="
+					position:absolute;left:0; top:0;
+					width:22;
+					visibility:hidden;
+					opacity:0.66;
+					" src="wn_nav.png">
+		<img class="left"
+			 style="
+					z-index:-1;
+					position:absolute;left:0; top:0;
+					margin-left:-99; margin-top:33;
+					width:88;
+					background-color:pink;
+					border:1px solid pink;
+					" src="wn_nav.png">
+		<img class="hover"
+			 style="
+					z-index:-1;
+					position:absolute; left:0; top:0;
+					margin-left:0; margin-top:44;
+					width:111;
+					background-color:magenta;
+					border:1px solid magenta;
+					" src="wn_nav.png">
+		<img class="right"
+			 style="
+					z-index:-1;
+					position:absolute; left:0; top:0;
+					margin-left:122; margin-top:33;
+					width:88;
+					background-color:cyan;
+					border:1px solid cyan;
+					" src="wn_nav.png">
+	  </div>
+	  <div class="inner_hole"
+		   style="
+				  position:relative; left:0; top:0
+				  width:333;
+				  border:1px solid red;
+				  ">
+	  </div>
 	</div>
   </body>
 </html>
