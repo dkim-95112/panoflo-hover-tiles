@@ -20,19 +20,25 @@
 	});
 	var helper_imgs = div_tiles.map(function(){
 	  return $(this).find('img').clone().addClass('helper').css({
-		'top':33
-	  }).prependTo(this)[0];
+		'top':33,
+	  }).hide().prependTo(this)[0];
 	});
 	helper_imgs.bind('hover_over', function(){
-	  $(this).css({'width':222, 'visibility':'visible', 'margin-left':0});
+	  $(this).show().animate({
+		'width':222, 'margin-left':0
+	  }, 'fast');
 	}).bind('hover_prev', function(){
-	  $(this).css({'width':99, 'visibility':'visible', 'margin-left':-77});
+	  $(this).show().animate({
+		'width':99, 'margin-left':-77
+	  }, 'fast');
 	}).bind('hover_prev_other', function(){
-	  $(this).css({'visibility':'hidden'});
+	  $(this).hide();
 	}).bind('hover_next', function(){
-	  $(this).css({'width':99, 'visibility':'visible', 'margin-left':199});
+	  $(this).show().animate({
+		'width':99, 'margin-left':199
+	  }, 'fast');
 	}).bind('hover_next_other', function(){
-	  $(this).css({'visibility':'hidden'});
+	  $(this).hide();
 	});
 	target_imgs.mouseenter(function(e){
 	  $(this).css({
