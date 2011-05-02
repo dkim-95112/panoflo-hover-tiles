@@ -3,8 +3,10 @@
 	<script type="text/javascript" src="jquery-1.5.2.js"></script>
 	<script type="text/javascript" src="jquery-1.5.2.pano.js"></script>
 	<script type="text/javascript">
-	  $(function(){
-	    $('#my-hover-tile').hover_tile();
+	  $(function(){ // shortcut to document.onload()
+	    $('#my-hover-tile').hover_tile({
+	      'hover_animate':{'over':{ 'width':222 } }
+	    });
 	  });
 	</script>
 	<style>
@@ -41,6 +43,6 @@
 	<div class="rounded-corners my_cup">
 	  <div id="my-hover-tile"></div>
 	  <p>Nullam non libero justo, nec sodales dolor. Nam venenatis massa et augue consectetur dapibus. Quisque eleifend turpis nec nulla porttitor vel cursus mauris tristique. Phasellus pharetra scelerisque pellentesque. Cras lectus massa, rutrum sed pharetra vel, hendrerit nec sem. Vivamus sagittis nulla lacus. Vestibulum scelerisque ornare ante ac malesuada. Nunc accumsan, risus sed posuere fringilla, mi odio placerat risus, vel gravida felis diam ut ante. Proin venenatis odio et dui accumsan eu auctor lectus porta. In accumsan consequat ligula ut interdum. Vivamus laoreet magna vitae lacus laoreet feugiat. Proin porttitor, nunc eu pretium varius, ante ligula tristique enim, venenatis tristique tortor sapien id dui. Morbi feugiat orci nec magna congue pretium. Nam a pharetra nibh. Nam ac dolor vel nunc consequat venenatis. Maecenas mi quam, viverra ac tempor sed, facilisis venenatis nisi. Suspendisse et purus pharetra arcu congue imperdiet. Nulla ut vulputate neque. Donec volutpat pretium arcu mattis cursus. Sed hendrerit hendrerit nunc, eu tempor lectus egestas in.
-			</div>
+	</div>
   </body>
 </html>

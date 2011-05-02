@@ -27,7 +27,7 @@
 	'hover_animate':{
 	  'duration':100,
 	  'over':{
-		'width':222, 'left':0, 'top':44,
+		'width':99, 'left':0, 'top':44,
 	  },
 	  'next':{
 		'width':99, 'left':188, 'top':44
@@ -39,7 +39,7 @@
   };
   var methods = {
 	init: function(options){
-	  options && $.extend(settings, options);
+	  options && $.extend(true, settings, options);
 	  this.append(function(){
 		return settings.image_list.map(function(src){
 		  return '<div class="tile"><img src="' + src +
