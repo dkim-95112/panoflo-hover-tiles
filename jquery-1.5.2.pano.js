@@ -87,9 +87,4 @@
 	  }
 	}
   };
-
-  $(function(){
-	$('#my-hover-tile').hover_tile();
-  });
-
 })(jQuery);
