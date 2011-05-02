@@ -1,5 +1,5 @@
-// id:$id
 (function($){    // like horizontally scrolling tiles
+  // id:$id
   var round = Math.round;
   var slice = Array.prototype.slice;
   var settings = {

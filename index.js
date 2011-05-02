@@ -1,5 +1,5 @@
-// id:$id
 (function($){
+  // id:$id
   var image_list = (function(){ // test image_list
 	var r = [];
 	for(var i = 0; i < 17; i++){
@@ -34,7 +34,7 @@
 	  }
 	}
   };
-  $(function(){ // document.ready() alias
+  $(function(){ // document.ready alias
 	$('#my-hover-tile').hover_tile(options);
 	$('#my-hover-tile-syntax').load('index.js');
   });
