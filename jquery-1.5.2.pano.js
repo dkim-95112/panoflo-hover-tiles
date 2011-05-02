@@ -1,17 +1,9 @@
+// id:$id
 (function($){    // like horizontally scrolling tiles
   var round = Math.round;
   var slice = Array.prototype.slice;
-
-  var image_list = (function(){ // test image_list
-	var r = [];
-	for(var i = 0; i < 17; i++){
-	  r.push('img/images-' + i + '.jpeg');
-	}
-	return r;
-  })();
-
   var settings = {
-	'image_list':image_list,
+	'image_list':[],
 	'div_tile_css':{
 	  'position':'relative',
 	},
@@ -22,22 +14,22 @@
 	},
 	'hover_css':{
 	  'position':'absolute',
-	  'width':33, 'left':0, 'top':44,
+	  'width':33, 'left':0,
 	},
 	'hover_animate':{
 	  'duration':100,
 	  'over':{
-		'width':99, 'left':0, 'top':44,
+		'width':222, 'left':0,
 	  },
 	  'next':{
-		'width':99, 'left':188, 'top':44
+		'width':99, 'left':188,
 	  },
 	  'prev':{
-		'width':99,'left':-55, 'top':44
+		'width':99,'left':-55,
 	  }
 	}
   };
-  var methods = {
+  var methods = { // plugin convention
 	init: function(options){
 	  options && $.extend(true, settings, options);
 	  this.append(function(){
@@ -69,14 +61,14 @@
 		  settings.hover_animate.duration)
 	  }).bind('hover.next', function(){
 		$(this).show().animate(
-		  settings.hover_animate.next,
+ 		  settings.hover_animate.next,
 		  settings.hover_animate.duration)
 	  }).bind('hover.other', function(){
 		$(this).hide().css(settings.hover_css);
 	  });
 	}
   };
-  $.fn.hover_tile = function(method){ // plugin
+  $.fn.hover_tile = function(method){ // plugin convention
 	if(methods[ method]){
 	  return methods[ method].apply(this, slice.call(arguments, 1));
     } else {
